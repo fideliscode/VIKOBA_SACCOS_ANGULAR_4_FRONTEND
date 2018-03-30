@@ -1,0 +1,53 @@
+	<div class="panel panel-primary " style="box-shadow: 0 3px 14px rgb(8, 8, 8);margin:10px;">
+	
+   <div class="panel-body" >
+		
+		<button *ngIf="groupService.IsRole()!=='AUTHOR'" class="btn btn-info btn-block" style="cursor: pointer;" (click)="ongetreport()" >
+			<strong>{{i+1}}. {{user.fname | uppercase }} {{user.lname | uppercase}}
+		</strong>
+	    </button>
+	    <button *ngIf="groupService.IsRole()==='AUTHOR'" class="btn btn-info btn-block" style="cursor: pointer;"  ><strong>{{user.fname | uppercase }} {{user.lname | uppercase}}
+		</strong>
+	    </button>
+		
+		<br>
+		<div  > <strong>Phone:</strong>  0{{user.phone}}</div>
+		<div  > <strong>Email:</strong>  {{user.email}}</div>
+
+   </div>
+  <div *ngIf="groupService.IsRole()==='ADMIN' || groupService.IsRole()==='AUTHOR'">
+   <div class="panel-footer" style="background-color: #c0d4e6;">
+	    <div *ngIf="editing" >
+           <div>
+		   <label>First Name</label> 
+		   <input class="form-control" type="text" [(ngModel)]="editValue1">   
+		   </div>
+		 
+		   <div>
+		   <label>Last Name</label> 
+		   <input class="form-control" type="text" [(ngModel)]="editValue2">   
+		   </div>
+		 
+		   <div>
+		   <label>Email</label> 
+		   <input class="form-control" type="email" [(ngModel)]="editValue3">   
+		   </div>
+		 
+		   <div>
+		   <label>Phone</label> 
+		   <input class="form-control" type="phone" [(ngModel)]="editValue4"> 
+		     
+		     <a style="cursor: pointer;color:#3e2765;"  (click)="onUpdateUser()">Save</a>
+		     <a style="cursor: pointer;color:#3e2765;"  (click)="onCancelUser()">Cancel</a>
+		   </div>	
+	    </div>
+	   	
+		<div *ngIf="!editing ">
+			<a style="cursor: pointer;color:#3e2765;" (click)="onEditUser()" >Edit</a>
+			<a style="cursor: pointer;color:#3e2765;" (click)="onDeleteUser()">Delete</a>
+
+		</div>
+   </div>
+ </div>
+</div>
+

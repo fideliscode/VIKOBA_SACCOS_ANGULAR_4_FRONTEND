@@ -1,0 +1,171 @@
+<div class="container-fluid" >
+<div class="row">
+
+<div class=" col-lg-7 ">
+<div class="panel panel-primary" style=" background-color: white; box-shadow: 0 3px 14px rgb(8, 8, 8);">
+  <div class="panel-body" >
+    <button *ngIf='ready' (click)="onbacktomembers()" class= "btn btn-info btn-block" >
+     <div> <h5><strong>{{currentname | uppercase}} CONTRIBUTIONS</strong></h5>
+     </div>
+    </button>
+    
+    <hr>
+  <table *ngIf='ready' class="table table-striped  table-hover" style="border-radius: 10px;">
+      <thead >
+        <tr >
+          <th>ROUND</th>
+          <th>AMOUNT</th>
+          <th>DATE</th>
+        </tr>
+      </thead>
+   
+     <tbody *ngFor="let contribution of contributions; let i=index">
+        <tr>
+           <th scope="row">{{i+1}}</th>
+           <td data-toggle="tooltip" data-placement="auto right" title="click to Edit"
+            (click)="onedit(contribution)" style="cursor: pointer;">{{contribution.amount}}
+           </td> 
+           <th>{{contribution.created_at | date}}</th>
+        </tr>
+     </tbody>
+  </table>
+    
+    <table *ngIf='ready' class="table table-striped " style="border-radius: 10px;"> 
+      <tr >
+        <th><h4>TOTAL....{{sum}}</h4></th>
+      </tr>
+    </table>
+</div>   
+   
+   <div class="panel-footer" *ngIf="!footer && (groupService.IsRole()==='ADMIN')">
+      <button *ngIf='ready'  (click)="onAddingContri()" class= "btn btn-info btn-sm" ><strong>Add New contribution</strong></button>
+      <button *ngIf='ready'  (click)="onbacktomembers()" class= "btn btn-info btn-sm" style="float: right;" ><strong><span class="glyphicon glyphicon-menu-right"></span></strong></button>
+   </div> 
+   
+   <div class="panel-footer"  *ngIf="footer && (groupService.IsRole()==='ADMIN')">
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="row" >
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+           <div class="form-group">
+            <label for="amount">amount</label>
+            <input type="integer" name="amount" id="amount" ngModel class="form-control" required>
+           </div>
+          <button *ngIf="groupService.IsRole()==='ADMIN'" class="btn btn-primary " type="submit">
+            <strong>Add</strong>
+          </button>
+          <button *ngIf="groupService.IsRole()==='ADMIN'" class="btn btn-primary " style="float: right;" (click)="oncancel()">
+            <strong>Cancel</strong>
+          </button>
+        </div>
+     </div>
+    </form>  
+   </div>
+ 
+   <div class="panel-footer"  *ngIf="editing && (groupService.IsRole()==='ADMIN')">
+    <div class="container-fluid">
+      <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="form-group">
+        <label>amount</label> 
+       <input class="form-control" type="integer" [(ngModel)]="editValue"> 
+       </div>
+        
+        <button *ngIf="groupService.IsRole()==='ADMIN'" style="cursor: pointer;" class="btn btn-primary"  
+        (click)="onUpdateAmount()"><strong>Edit</strong>
+        </button>  
+        
+        <button *ngIf="groupService.IsRole()==='ADMIN'" style="cursor: pointer;float: right;" class="btn btn-primary" 
+        (click)="onDeleteAmount()"><strong>Delete</strong>
+        </button>
+        
+         <button *ngIf="groupService.IsRole()==='ADMIN'" style="cursor: pointer;" class="btn btn-primary " 
+         (click)="oncancel()"><strong>Cancel</strong>
+        </button>
+       
+       </div>
+      </div>
+   </div>
+
+
+
+</div>
+</div>
+
+<div class="col-lg-5" *ngIf="groupService.getcurrentemail()===AuthService.getEmail()" style=" background-color: white; box-shadow: 0 3px 14px rgb(8, 8, 8);border-radius: 5px;">
+
+<div class="panel panel-primary" >
+  <br>
+<div class="panel-body" *ngIf="!change">
+    <button class="btn btn-primary btn-block" *ngIf="!change" (click)="onChangePassword()" ><strong>Reset Your Password
+    </strong>
+    </button>
+</div>
+
+<div class="panel-body" *ngIf="formchange">
+    
+      <div ><h6>Hi {{currentname | lowercase}} To continue, please verify it's you</h6>
+      </div>
+
+  <form   #f="ngForm" (ngSubmit)="onVerify(f)">    
+     <div class="form-group">
+          <label for="password" style="color:#3FA6EE;">Enter your password</label>
+          <input 
+          type="password" 
+          name="password" 
+          id="password" 
+          placeholder="Current Password" 
+          required
+           ngModel 
+          class="form-control" 
+          #password="ngModel">
+         
+      </div>
+ 
+      <button  type="submit" class="btn btn-primary" style="float: right;"  (ngSubmit)="onVerify(f)"><strong>Next</strong>
+      </button> 
+      <button class="btn btn-primary"  (click)="onBackingOff()" ><strong>Back</strong>
+      </button>
+     
+  </form> 
+ <span class="help-block " style="color: red;" *ngIf="groupService.getValidity()">Invalid password!</span>
+</div>
+
+<div class="panel-body">
+  <button class="btn btn-primary btn-block" *ngIf="showsuccess" (click)="onshowsuccess()"><strong><h4>successful changed your password!</h4></strong></button>
+</div>
+
+
+<div class="panel-body" *ngIf="readytochange">
+
+ <form  #p="ngForm" (ngSubmit)="onPassChange(p)">
+    <div class="form-group">
+       <input type="password" name="password" id="password" placeholder="New Password" required ngModel class="form-control">
+    </div>
+    <div class="form-group">
+       <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" required ngModel class="form-control">
+    </div>
+
+  <span class="help-block " style="color: red;" *ngIf="showmismach">Password mismach!</span>
+  <div class="label">
+  
+  <button type="submit" class="btn btn-primary btn-sm" style="float: right;" (click)="onPassChange(p)"><strong>Reset Your Password</strong></button>
+  <button type="submit" class="btn btn-primary btn-sm" style="float:left;" (click)="onBackingOffmore()"><strong><span class="glyphicon glyphicon-menu-left"></span></strong></button><br>
+  
+  </div>
+ 
+ </form>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+</div>
+</div>
+
+

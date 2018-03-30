@@ -1,0 +1,43 @@
+.mycontent{
+	font-weight: 700;
+}
+.btn-info {
+	background-color: white;
+	border-bottom: 0PX;
+	border-top: 0PX;
+	border-left: 0PX;
+	border-right: 0PX;
+	color: black;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.btn-info:hover {
+    background-color: white;
+	border-bottom: 0PX;
+	border-top: 0PX;
+	border-left: 0PX;
+	border-right: 0PX;
+	color: black;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	box-shadow: 0 3px 14px rgb(8, 8, 8);
+	border-radius: 4px;	
+}
+
+
+h5{
+	color: #23527c;
+}
+.panel-footer{
+	 background-color:#ffffff;
+	 
+}
+a:focus, a:hover {
+    color:#23527c;
+     text-decoration: none;
+}
+hr{
+	margin-top: 0px;
+	margin-bottom: 0px;
+
+}

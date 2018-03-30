@@ -1,0 +1,41 @@
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+	<hr>
+<div class="panel panel-primary " style="box-shadow: 0 3px 14px rgb(8, 8, 8);">
+	 
+	        <div class="panel-body" style="text-align: center">
+
+		          <div class="mycontent" >{{i+1}} {{group.saccosName}} </div>
+		          <hr>
+		          <div class="mycontent">Admin Email: <strong>{{group.admin_email}}</strong></div>
+	        </div>
+      <div *ngIf="groupService.IsRole()==='AUTHOR'">
+      <div class="panel-footer">
+	           
+             <div *ngIf="editing">
+		              <div>
+		              <label>GROUP NAME</label> 
+		              <input class="form-control" type="text" [(ngModel)]="editValue1">   
+		              </div>
+		
+		              <div> 
+		              <label>ADMIN EMAIL</label>
+		              <input class="form-control" type="email" [(ngModel)]="editValue2">
+                  </div>
+		           
+                  <a style="cursor: pointer;"  (click)="onUpdate()">Save</a>
+		              <a style="cursor: pointer;"  (click)="onCancel()" >cancel</a>
+     	       </div>
+	   
+	
+	
+     		     <div *ngIf="!editing">
+			            <a style="cursor: pointer;" (click)="onEdit()" >Edit</a>
+			            <a style="cursor: pointer;" (click)="onDelete()" >Delete</a>
+		         </div>
+	
+      </div>
+      </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+        <div  class="panel panel-primary" style="box-shadow: 0 3px 14px rgb(8, 8, 8);">
+<div class="panel-body">
+<div *ngIf="groupService.IsRole()==='AUTHOR'" class="text-center">
+  <label for="p"><h3>Welcome Author! Please Provide Credetials For  New Group</h3>
+  </label>
+</div>
+
+<form  *ngIf="groupService.IsRole()==='AUTHOR'" #f="ngForm" (ngSubmit)="onSubmit(f)">
+<hr>
+   <div class="row">
+     <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+         <div class="form-group">
+          <label for="saccosName">Group Name</label>
+         <input type="text" name="saccosName" id="saccosName" ngModel class="form-control" required>
+         </div>
+         <div class="form-group">
+          <label for="admin_email">Admin Email</label>
+         <input type="email" name="admin_email" id="admin_email" ngModel class="form-control" required>
+         </div>
+         <button *ngIf="groupService.IsRole()==='AUTHOR'" class="btn btn-primary btn-block" type="submit"><strong>CREATE</strong></button>
+     
+    </div>
+   </div>
+       
+
+</form>
+</div>
+</div>
+</div>
+<div class="col-lg-3">
+        </div>

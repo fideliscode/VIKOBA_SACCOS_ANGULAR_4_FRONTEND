@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+<div  class="panel panel-primary" style="box-shadow: 0 3px 14px rgb(8, 8, 8);">
+<div class="panel-body">
+
+    <div *ngIf="!groupService.IsLoged()" class="text-center"><label for="p"><h3>Welcome Back! Please Signin</h3></label>
+    </div>
+    <hr  *ngIf="!groupService.IsLoged()">
+    <form  *ngIf="!groupService.IsLoged()"  #f="ngForm" (ngSubmit)="onSignin(f)">
+     
+       <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+          type="email" 
+          name="email" 
+          id="email" 
+          required 
+          email
+          ngModel
+          #email="ngModel" 
+          class="form-control">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+       </div>
+ 
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+          type="password" 
+          name="password" 
+          id="password" 
+          required
+           ngModel 
+          class="form-control" 
+          #password="ngModel">
+          <!--<span class="help-block" *ngIf="!password.valid && password.touched">Please enter a valid password!</span>-->
+          <span class="help-block " style="color: red;" *ngIf="groupService.getValidity()">Invalid password or email!</span>
+      </div>
+ 
+      <button  *ngIf="!groupService.IsLoged() "type="submit" class="btn btn-primary btn-block"  >LOG IN</button> 
+     
+</form> 
+</div>
+</div>
+  </div>
+</div>
+
+

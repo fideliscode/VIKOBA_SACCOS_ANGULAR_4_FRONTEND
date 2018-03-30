@@ -1,0 +1,40 @@
+<div class="row">
+<div *ngIf="groupService.Auntheticated()" class="col-xs-12 col-md-12  col-lg-12 ">
+	<div class="row">
+    <div class="col-xs-12 col-md-12  col-lg-12 ">
+	
+	<nav *ngIf="groupService.IsRole()!=='AUTHOR'" class="btn btn-primary btn-block" style="box-shadow: 0 3px 12px rgb(8, 8, 8); background-color: white;color: black;"><strong><h4>{{count}} MEMBERS</h4></strong>
+	
+	</nav>
+	 
+	<nav *ngIf="groupService.IsRole()==='AUTHOR'" class="btn btn-primary btn-block" style="box-shadow: 0 3px 12px rgb(8, 8, 8); background-color: white;color: black;">
+	<h4>{{groupService.IsRole()}}</h4>
+	</nav>
+	
+	</div>
+    </div>
+</div>
+</div>
+
+<div  class="container-fluid">
+	<div class="row">
+		<div  class="col-sm-6  col-xs-12 col-md-4 col-lg-4" *ngFor="let user of users; let i=index"  >
+ 
+ 		<div class="container-fluid">
+ 			<div class="row"><div class="col-lg-12">
+  	  <app-user  [user]="user"  [i]="i" 
+       (userDeleted)="onDeletedUser($event)">
+      </app-user></div></div></div>
+    
+  </div>
+<br>
+	</div>
+</div>
+
+ 
+
+  
+
+
+
+

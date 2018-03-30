@@ -1,0 +1,23 @@
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+	
+   <div class="row">
+   <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+
+		<button *ngIf="groupService.IsRole()==='AUTHOR'" class="btn btn-info btn-block" style="box-shadow: 0 3px 14px rgb(8, 8, 8);"><h4>{{count}}   GROUPS   </h4> 
+		</button>
+
+   </div>
+   </div>
+   
+   
+   <app-group *ngFor="let group of groups; let i=index"  [group]="group" [i]="i" (groupDeleted)="onDeleted($event)"></app-group>
+
+</div>
+</div>
+
+
+
+
+
+

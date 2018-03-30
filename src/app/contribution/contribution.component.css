@@ -1,0 +1,86 @@
+.mycontent{
+	font-weight: 700;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #71cbf7;
+}
+.panel-body {
+     padding: 0px; 
+}
+
+th {
+     text-align: center;
+ }
+tr{ 
+	text-align: center;
+}
+.btn {
+	background-color: white;
+	margin-bottom: 10px;
+	color: #999999;
+	border:0px;
+    box-shadow: 0 3px 14px rgb(8, 8, 8);
+
+}
+.btn:hover{
+    background-color: white;
+    margin-bottom: 10px;
+    border:0px;
+    color: black;
+    box-shadow: 0 3px 14px rgb(153, 153, 153);
+
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 3px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 14px rgb(8, 8, 8);
+    border-radius: 15px;
+    background-color: white;
+}
+.table>tbody>tr>td:hover{
+        padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 3px 14px rgb(8, 8, 8);
+}
+
+
+hr {
+    
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #999999;
+}
+
+.panel-footer {
+    padding: 10px 15px;
+ 
+    border-radius: 5px;
+    box-shadow: 0 3px 14px rgb(8, 8, 8);
+    
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 0px solid transparent; 
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.app{
+    margin: 30px;
+    padding-top: 0px;
+
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.form-control[_ngcontent-sld-9] {
+    width: 100%;
+    margin: 20px;
+}

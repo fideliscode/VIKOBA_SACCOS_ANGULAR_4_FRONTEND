@@ -1,3 +1,94 @@
-<h1>
-  {{title}}
-</h1>
+
+<div class="nav">
+ <nav class="navbar navbar-default ">
+   <div class="container-fluid">
+    <ul class="navbar-brand" style="margin-right: 30px;border-left: 20px; ">
+         <a  style="color: #999888;text-decoration: none;" href="#"><strong>{{AuthService.getGroupname()}}</strong> </a>
+       </ul>
+         
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-target="#mainNavbar" data-toggle="collapse" aria-expanded="false">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>   
+         </button>
+      </div>
+
+ <div class="collapse navbar-collapse" id= "mainNavbar">
+   <div class="pull" >
+           
+           <ul  class="nav navbar-nav navbar-center" style="margin-left: 30px">
+              <li *ngIf="GroupService.Auntheticated()" role="presentation" routerLinkActive="active">
+                <a  *ngIf="GroupService.IsRole()==='AUTHOR'"
+                style="cursor: pointer;" [routerLink]="['/groups']">GROUPS</a>
+               </li>   
+             
+               
+               <li *ngIf="GroupService.Auntheticated()"  role="presentation" routerLinkActive="active">
+                <a *ngIf="GroupService.IsRole()==='AUTHOR'" 
+                style="cursor: pointer;" [routerLink]= "['/new-group']">ADD GROUP</a>
+               </li> 
+             
+               <li *ngIf="GroupService.Auntheticated() " role="presentation"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a  *ngIf="GroupService.IsRole()!=='AUTHOR'" style="cursor: pointer;" [routerLink]= "['/']">MEMBERS</a>
+                 <a  *ngIf="GroupService.IsRole()==='AUTHOR'" style="cursor: pointer;" [routerLink]= "['/']">PROFILE</a>
+               </li> 
+              
+
+             
+              
+                <li *ngIf="GroupService.Auntheticated()"  role="presentation" routerLinkActive="active">  
+                 <a *ngIf="GroupService.IsRole()==='AUTHOR' || GroupService.IsRole()==='ADMIN'" style="cursor: pointer;"  [routerLink]= "['/signup']">REGISTER</a>
+                </li>  
+                    
+               
+              
+                <li  *ngIf="!GroupService.Auntheticated()" role="presentation" >
+                 <a *ngIf="!GroupService.Auntheticated()" style="cursor: pointer;"  [routerLink]= "['/signin']"><strong>LOG IN</strong></a>
+                </li>   
+           
+            </ul>  
+             <div class="nav navbar-nav  navbar-right">
+               <li *ngIf="GroupService.Auntheticated()">
+                  <a style="cursor: pointer;">
+                 {{AuthService.getRole()}}
+                 </a>
+                </li>
+             </div>
+
+<div *ngIf="GroupService.Auntheticated()"  class="dropdown" class="nav navbar-nav  navbar-right">
+                
+    <li role="presentation" routerLinkActive="active">
+        <a *ngIf="GroupService.Auntheticated()" class=" dropdown-toggle" style="cursor: pointer;color:white;" data-toggle="dropdown" data-hover="dropdown">  
+            <span class="glyphicon glyphicon-user"></span>   
+                {{AuthService.getusername()}} 
+            
+            <span class="glyphicon glyphicon-menu-down"></span>
+         </a>
+      
+           
+          
+               <ul class="dropdown-menu" style="background-color: #303036; "> 
+                 
+                    <li *ngIf="GroupService.Auntheticated()"  style="background-color: #999999; ">
+                    <a style="cursor: pointer;" (click)="AuthService.logout()">LOG OUT</a> 
+                    </li>
+                </ul>
+    </li>
+</div>
+
+     
+
+
+          
+       </div> 
+       </div>
+       </div>
+</nav> 
+</div>
+
+
+        <router-outlet></router-outlet>
+    
+  
+  

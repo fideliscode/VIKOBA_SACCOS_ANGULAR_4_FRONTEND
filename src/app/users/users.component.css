@@ -1,0 +1,26 @@
+#app{
+	margin: 30px;
+}
+hr {
+    height: 2px;
+    background-color:#3E2765;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    width: 50%;
+}.card {
+    padding: 12px 15px;
+    display: block;
+}
+h3{
+	text-align: center;
+	border-bottom: 0px;
+}
+
+.btn {
+	background-color: #1b6d85;
+	margin-bottom: 10px;
+	color: white;
+	border:0px;
+	
+	
+}
